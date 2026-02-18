@@ -1,6 +1,21 @@
-# Code Framework Graph Generator Skill
+# Code Framework Graph Generator
+
+[中文文档](README_CN.md)
 
 A skill for analyzing code project structure and generating hierarchical Mermaid framework diagrams showing module relationships, dependencies, and data flow.
+
+## Background
+
+With the rapid evolution of AI agents, software development velocity has skyrocketed. Projects are emerging at an unprecedented pace, making it increasingly challenging for developers to quickly grasp new codebases. Traditional methods of understanding a project—reading documentation, browsing source files, or tracing imports—are time-consuming and often incomplete.
+
+**Code Framework Graph Generator** addresses this challenge by automatically generating visual architecture diagrams from source code. It transforms complex code structures into clear, hierarchical diagrams that reveal:
+
+- Entry points and execution flow
+- Module organization and dependencies
+- Component relationships (imports, inheritance, composition, calls)
+- System boundaries and layers
+
+With a single glance, developers can understand the architecture of any project, dramatically reducing the learning curve for new codebases.
 
 ## Features
 
