@@ -31,6 +31,25 @@
 1. 扫描项目 → 2. 识别组件 → 3. 分析关系 → 4. 构建图结构 → 5. 生成 Mermaid
 ```
 
+## 安装
+
+将 `code-framework-graph` 文件夹复制到 AI 助手的技能目录即可：
+
+```
+.qoder/skills/code-framework-graph/
+```
+
+**目录结构：**
+```
+code-framework-graph/
+├── SKILL.md              # 技能说明和工作流程
+├── reference.md          # 详细参考指南
+└── scripts/
+    └── graph_to_mermaid.py  # JSON 转 Mermaid 转换器
+```
+
+**安装完成！** 安装后即可使用，只需在 AI 助手中输入 `/code-framework-graph` 即可调用。
+
 ---
 
 ## 案例研究
@@ -137,26 +156,26 @@
 
 ### 快速上手示例
 
-只需使用自然语言提示词即可调用此技能：
+只需输入 `/code-framework-graph` 后跟您的请求即可：
 
 **示例 1 - 基本用法：**
 ```
-为这个项目生成框架图
+/code-framework-graph 为这个项目生成框架图
 ```
 
 **示例 2 - 指定关注点：**
 ```
-分析这个代码库的架构，生成一个专注于核心模块的 Mermaid 图
+/code-framework-graph 分析这个代码库的架构，生成一个专注于核心模块的 Mermaid 图
 ```
 
 **示例 3 - 指定语言：**
 ```
-为这个 Python 项目创建依赖图，展示模块间的关系
+/code-framework-graph 为这个 Python 项目创建依赖图，展示模块间的关系
 ```
 
 **示例 4 - 指定输出格式：**
 ```
-生成框架图，并保存为 Mermaid 和 PNG 两种格式
+/code-framework-graph 生成框架图，并保存为 Mermaid 和 PNG 两种格式
 ```
 
 ### 文件结构

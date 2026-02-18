@@ -31,6 +31,25 @@ With a single glance, developers can understand the architecture of any project,
 1. Scan Project → 2. Identify Components → 3. Analyze Relationships → 4. Build Graph → 5. Generate Mermaid
 ```
 
+## Installation
+
+To install this skill, copy the `code-framework-graph` folder to your AI assistant's skills directory:
+
+```
+.qoder/skills/code-framework-graph/
+```
+
+**Directory Structure:**
+```
+code-framework-graph/
+├── SKILL.md              # Skill instructions and workflow
+├── reference.md          # Detailed reference guide
+└── scripts/
+    └── graph_to_mermaid.py  # JSON to Mermaid converter
+```
+
+**That's it!** Once installed, the skill is ready to use. Simply invoke it with `/code-framework-graph` in your AI assistant.
+
 ---
 
 ## Case Studies
@@ -137,26 +156,26 @@ This skill is designed to be used by AI assistants to analyze code projects. The
 
 ### Quick Start Examples
 
-Simply invoke the skill with a natural language prompt:
+Simply invoke the skill with `/code-framework-graph` followed by your request:
 
 **Example 1 - Basic Usage:**
 ```
-Generate a framework diagram for this project
+/code-framework-graph Generate a framework diagram for this project
 ```
 
 **Example 2 - With Specific Focus:**
 ```
-Analyze the architecture of this codebase and generate a Mermaid diagram focusing on the core modules
+/code-framework-graph Analyze the architecture of this codebase and generate a Mermaid diagram focusing on the core modules
 ```
 
 **Example 3 - For a Specific Language:**
 ```
-Create a dependency graph for this Python project showing module relationships
+/code-framework-graph Create a dependency graph for this Python project showing module relationships
 ```
 
 **Example 4 - With Output Format:**
 ```
-Generate a framework diagram and save it as both Mermaid and PNG files
+/code-framework-graph Generate a framework diagram and save it as both Mermaid and PNG files
 ```
 
 ### Files
