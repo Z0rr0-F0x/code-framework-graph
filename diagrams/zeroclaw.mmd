@@ -1,0 +1,117 @@
+graph TD
+    subgraph "Entry Points"
+        Nmain_rs["main.rs"]
+        Nlib_rs["lib.rs"]
+    end
+    subgraph "Agent Core"
+        Nagent_agent_rs["agent.rs"]
+        Nagent_loop__rs["loop_.rs"]
+        Nagent_dispatcher_rs["dispatcher.rs"]
+        Nagent_prompt_rs["prompt.rs"]
+        Nagent_memory_loader_rs["memory_loader.rs"]
+    end
+    subgraph "Communication Channels"
+        Nchannels_mod_rs["mod.rs"]
+        Nchannels_traits_rs["traits.rs"]
+        Nchannels_telegram_rs["telegram.rs"]
+        Nchannels_whatsapp_rs["whatsapp.rs"]
+        Nchannels_discord_rs["discord.rs"]
+        Nchannels_slack_rs["slack.rs"]
+        Nchannels_matrix_rs["matrix.rs"]
+        Nchannels_imessage_rs["imessage.rs"]
+        Nchannels_email_channel_rs["email_channel.rs"]
+        Nchannels_irc_rs["irc.rs"]
+        Nchannels_signal_rs["signal.rs"]
+        Nchannels_lark_rs["lark.rs"]
+        Nchannels_dingtalk_rs["dingtalk.rs"]
+        Nchannels_mattermost_rs["mattermost.rs"]
+        Nchannels_qq_rs["qq.rs"]
+        Nchannels_cli_rs["cli.rs"]
+    end
+    subgraph "Tools"
+        Ntools_mod_rs["mod.rs"]
+        Ntools_traits_rs["traits.rs"]
+        Ntools_browser_rs["browser.rs"]
+        Ntools_shell_rs["shell.rs"]
+        Ntools_file_read_rs["file_read.rs"]
+        Ntools_file_write_rs["file_write.rs"]
+        Ntools_http_request_rs["http_request.rs"]
+        Ntools_git_operations_rs["git_operations.rs"]
+        Ntools_memory_store_rs["memory_store.rs"]
+        Ntools_memory_recall_rs["memory_recall.rs"]
+        Ntools_screenshot_rs["screenshot.rs"]
+        Ntools_composio_rs["composio.rs"]
+        Ntools_schedule_rs["schedule.rs"]
+    end
+    subgraph "LLM Providers"
+        Nproviders_mod_rs["mod.rs"]
+    end
+    subgraph "Memory System"
+        Nmemory_mod_rs["mod.rs"]
+    end
+    subgraph "Security"
+        Nsecurity_mod_rs["mod.rs"]
+    end
+    subgraph "Hardware"
+        Nhardware_mod_rs["mod.rs"]
+    end
+    subgraph "Peripherals"
+        Nperipherals_mod_rs["mod.rs"]
+    end
+    subgraph "Observability"
+        Nobservability_mod_rs["mod.rs"]
+    end
+    subgraph "Scheduler"
+        Ncron_mod_rs["mod.rs"]
+    end
+    subgraph "Authentication"
+        Nauth_mod_rs["mod.rs"]
+    end
+    subgraph "Configuration"
+        Nconfig_mod_rs["mod.rs"]
+    end
+    subgraph "Tunnel"
+        Ntunnel_mod_rs["mod.rs"]
+    end
+    subgraph "Integrations"
+        Nintegrations_mod_rs["mod.rs"]
+    end
+    Nmain_rs -->|import| Nlib_rs
+    Nmain_rs -->|starts agent| Nagent_agent_rs
+    Nmain_rs -->|import| Nchannels_mod_rs
+    Nmain_rs -->|import| Nconfig_mod_rs
+    Nlib_rs -->|import| Nagent_agent_rs
+    Nlib_rs -->|import| Nchannels_mod_rs
+    Nlib_rs -->|import| Ntools_mod_rs
+    Nlib_rs -->|import| Nproviders_mod_rs
+    Nlib_rs -->|import| Nmemory_mod_rs
+    Nlib_rs -->|import| Nsecurity_mod_rs
+    Nlib_rs -->|import| Nhardware_mod_rs
+    Nlib_rs -->|import| Nperipherals_mod_rs
+    Nlib_rs -->|import| Nobservability_mod_rs
+    Nlib_rs -->|import| Ncron_mod_rs
+    Nlib_rs -->|import| Nauth_mod_rs
+    Nlib_rs -->|import| Nconfig_mod_rs
+    Nlib_rs -->|import| Ntunnel_mod_rs
+    Nlib_rs -->|import| Nintegrations_mod_rs
+    Nagent_agent_rs -->|import| Nagent_loop__rs
+    Nagent_agent_rs -->|import| Nagent_dispatcher_rs
+    Nagent_agent_rs -->|import| Nagent_prompt_rs
+    Nagent_agent_rs -->|import| Nagent_memory_loader_rs
+    Nagent_loop__rs -->|executes tools| Ntools_mod_rs
+    Nagent_loop__rs -->|calls LLM| Nproviders_mod_rs
+    Nchannels_mod_rs -->|import| Nchannels_traits_rs
+    Nchannels_mod_rs -->|import| Nchannels_telegram_rs
+    Nchannels_mod_rs -->|import| Nchannels_whatsapp_rs
+    Nchannels_mod_rs -->|import| Nchannels_discord_rs
+    Nchannels_mod_rs -->|import| Nchannels_slack_rs
+    Nchannels_telegram_rs -->|implementation| Nchannels_traits_rs
+    Nchannels_whatsapp_rs -->|implementation| Nchannels_traits_rs
+    Nchannels_discord_rs -->|implementation| Nchannels_traits_rs
+    Ntools_mod_rs -->|import| Ntools_traits_rs
+    Ntools_mod_rs -->|import| Ntools_browser_rs
+    Ntools_mod_rs -->|import| Ntools_shell_rs
+    Ntools_mod_rs -->|import| Ntools_file_read_rs
+    Ntools_mod_rs -->|import| Ntools_file_write_rs
+    Ntools_mod_rs -->|import| Ntools_http_request_rs
+    Ntools_mod_rs -->|import| Ntools_git_operations_rs

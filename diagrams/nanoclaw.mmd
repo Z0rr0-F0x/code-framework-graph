@@ -1,0 +1,57 @@
+graph TD
+    subgraph "Entry Point"
+        Nindex_ts["index.ts"]
+    end
+    subgraph "Channels"
+        Nchannels_whatsapp_ts["whatsapp.ts"]
+    end
+    subgraph "Core Services"
+        Ncontainer_runner_ts["container-runner.ts"]
+        Ndb_ts["db.ts"]
+        Ngroup_queue_ts["group-queue.ts"]
+        Ntask_scheduler_ts["task-scheduler.ts"]
+    end
+    subgraph "IPC"
+        Nipc_ts["ipc.ts"]
+    end
+    subgraph "Security"
+        Nmount_security_ts["mount-security.ts"]
+        Nwhatsapp_auth_ts["whatsapp-auth.ts"]
+    end
+    subgraph "Configuration"
+        Nconfig_ts["config.ts"]
+        Nenv_ts["env.ts"]
+    end
+    subgraph "Utilities"
+        Nlogger_ts["logger.ts"]
+        Nrouter_ts["router.ts"]
+        Ntypes_ts["types.ts"]
+    end
+    Nindex_ts -->|import| Nconfig_ts
+    Nindex_ts -->|creates WhatsApp channel| Nchannels_whatsapp_ts
+    Nindex_ts -->|runs agent containers| Ncontainer_runner_ts
+    Nindex_ts -->|database operations| Ndb_ts
+    Nindex_ts -->|import| Ngroup_queue_ts
+    Nindex_ts -->|import| Nipc_ts
+    Nindex_ts -->|import| Nrouter_ts
+    Nindex_ts -->|import| Ntask_scheduler_ts
+    Nindex_ts -->|import| Ntypes_ts
+    Nindex_ts -->|import| Nlogger_ts
+    Ncontainer_runner_ts -->|import| Ndb_ts
+    Ncontainer_runner_ts -->|import| Ntypes_ts
+    Ncontainer_runner_ts -->|import| Nlogger_ts
+    Ndb_ts -->|import| Ntypes_ts
+    Ndb_ts -->|import| Nlogger_ts
+    Ngroup_queue_ts -->|import| Ntypes_ts
+    Ngroup_queue_ts -->|import| Nlogger_ts
+    Nipc_ts -->|import| Ndb_ts
+    Nipc_ts -->|import| Nlogger_ts
+    Nrouter_ts -->|import| Ntypes_ts
+    Ntask_scheduler_ts -->|import| Ndb_ts
+    Ntask_scheduler_ts -->|import| Ngroup_queue_ts
+    Ntask_scheduler_ts -->|import| Nlogger_ts
+    Nchannels_whatsapp_ts -->|import| Ntypes_ts
+    Nchannels_whatsapp_ts -->|import| Nlogger_ts
+    Nmount_security_ts -->|import| Nlogger_ts
+    Nwhatsapp_auth_ts -->|import| Ndb_ts
+    Nwhatsapp_auth_ts -->|import| Nlogger_ts
