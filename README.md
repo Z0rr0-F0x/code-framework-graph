@@ -43,41 +43,6 @@ The following case studies demonstrate the reliability and accuracy of the Code 
 
 ![nanobot Architecture](diagrams/nanobot.png)
 
-```mermaid
-graph TD
-    subgraph "CLI (Entry Point)"
-        N__main___py["__main__.py"]
-        Ncli_commands_py["commands.py"]
-    end
-    subgraph "Agent Core"
-        Nagent_loop_py["loop.py"]
-        Nagent_context_py["context.py"]
-        Nagent_skills_py["skills.py"]
-        Nagent_subagent_py["subagent.py"]
-        Nagent_memory_py["memory.py"]
-        Nagent_tools["tools/"]
-    end
-    subgraph "Communication Channels"
-        Nchannels_base_py["base.py"]
-        Nchannels_manager_py["manager.py"]
-        Nchannels_telegram_py["telegram.py"]
-        Nchannels_whatsapp_py["whatsapp.py"]
-        Nchannels_discord_py["discord.py"]
-        Nchannels_slack_py["slack.py"]
-    end
-    subgraph "LLM Providers"
-        Nproviders_base_py["base.py"]
-        Nproviders_registry_py["registry.py"]
-        Nproviders_litellm_provider_py["litellm_provider.py"]
-    end
-    N__main___py -->|import| Ncli_commands_py
-    Ncli_commands_py -->|creates agent loop| Nagent_loop_py
-    Ncli_commands_py -->|manages channels| Nchannels_manager_py
-    Nagent_loop_py -->|uses LLM provider| Nproviders_base_py
-    Nchannels_telegram_py -->|inheritance| Nchannels_base_py
-    Nchannels_whatsapp_py -->|inheritance| Nchannels_base_py
-```
-
 ---
 
 ### Case 2: [zeroclaw](https://github.com/zeroclaw-labs/zeroclaw) (Rust)
@@ -100,37 +65,6 @@ graph TD
 **Framework Diagram**:
 
 ![zeroclaw Architecture](diagrams/zeroclaw.png)
-
-```mermaid
-graph TD
-    subgraph "Entry Points"
-        Nmain_rs["main.rs"]
-        Nlib_rs["lib.rs"]
-    end
-    subgraph "Agent Core"
-        Nagent_agent_rs["agent.rs"]
-        Nagent_loop__rs["loop_.rs"]
-        Nagent_dispatcher_rs["dispatcher.rs"]
-        Nagent_prompt_rs["prompt.rs"]
-    end
-    subgraph "Communication Channels"
-        Nchannels_mod_rs["mod.rs"]
-        Nchannels_traits_rs["traits.rs"]
-        Nchannels_telegram_rs["telegram.rs"]
-        Nchannels_whatsapp_rs["whatsapp.rs"]
-        Nchannels_discord_rs["discord.rs"]
-    end
-    subgraph "Tools"
-        Ntools_mod_rs["mod.rs"]
-        Ntools_browser_rs["browser.rs"]
-        Ntools_shell_rs["shell.rs"]
-        Ntools_file_read_rs["file_read.rs"]
-    end
-    Nmain_rs -->|import| Nlib_rs
-    Nmain_rs -->|starts agent| Nagent_agent_rs
-    Nagent_loop__rs -->|executes tools| Ntools_mod_rs
-    Nagent_loop__rs -->|calls LLM| Nproviders_mod_rs
-```
 
 ---
 
@@ -155,33 +89,6 @@ graph TD
 **Framework Diagram**:
 
 ![nanoclaw Architecture](diagrams/nanoclaw.png)
-
-```mermaid
-graph TD
-    subgraph "Entry Point"
-        Nindex_ts["index.ts"]
-    end
-    subgraph "Channels"
-        Nchannels_whatsapp_ts["whatsapp.ts"]
-    end
-    subgraph "Core Services"
-        Ncontainer_runner_ts["container-runner.ts"]
-        Ndb_ts["db.ts"]
-        Ngroup_queue_ts["group-queue.ts"]
-        Ntask_scheduler_ts["task-scheduler.ts"]
-    end
-    subgraph "IPC"
-        Nipc_ts["ipc.ts"]
-    end
-    subgraph "Utilities"
-        Nlogger_ts["logger.ts"]
-        Nrouter_ts["router.ts"]
-        Ntypes_ts["types.ts"]
-    end
-    Nindex_ts -->|creates WhatsApp channel| Nchannels_whatsapp_ts
-    Nindex_ts -->|runs agent containers| Ncontainer_runner_ts
-    Nindex_ts -->|database operations| Ndb_ts
-```
 
 ---
 
